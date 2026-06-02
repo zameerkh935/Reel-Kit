@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Creator Kit — Make Your First 3 Reels in 7 Days</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0c0c0c;
+    --white: #f7f4ee;
+    --cream: #f0ebe0;
+    --orange: #ff5c1a;
+    --orange-light: #ff7a40;
+    --yellow: #f5c842;
+    --green: #1db954;
+    --muted: #7a7568;
+    --border: #2a2a2a;
+    --ff-head: 'Bebas Neue', sans-serif;
+    --ff-body: 'Instrument Sans', sans-serif;
+    --ff-serif: 'Instrument Serif', serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--ff-body);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── TICKER TAPE ── */
+  .ticker {
+    background: var(--orange);
+    color: var(--black);
+    font-family: var(--ff-head);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-inner span { margin: 0 32px; }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--ff-head);
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+
+  .nav-logo span { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--black);
+    font-family: var(--ff-body);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 22px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-cta:hover { background: var(--yellow); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 5% 60px;
+    position: relative;
+    overflow: hidden;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Background grid */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,92,26,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,92,26,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* Big number watermark */
+  .hero-watermark {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--ff-head);
+    font-size: clamp(200px, 28vw, 400px);
+    color: rgba(255,92,26,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,92,26,0.12);
+    border: 1px solid rgba(255,92,26,0.3);
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    margin-bottom: 28px;
+    width: fit-content;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse 1.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero h1 {
+    font-family: var(--ff-head);
+    font-size: clamp(56px, 10vw, 130px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    margin-bottom: 12px;
+    animation: fadeUp 0.5s ease 0.1s both;
+  }
+
+  .hero h1 .outline {
+    -webkit-text-stroke: 2px var(--white);
+    color: transparent;
+  }
+
+  .hero h1 .orange { color: var(--orange); }
+
+  .hero-sub {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: rgba(247,244,238,0.65);
+    margin-bottom: 40px;
+    max-width: 540px;
+    line-height: 1.5;
+    animation: fadeUp 0.5s ease 0.2s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.5s ease 0.3s both;
+  }
+
+  .btn-main {
+    background: var(--orange);
+    color: var(--black);
+    font-family: var(--ff-body);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 36px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-main::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--yellow);
+    transform: translateX(-101%);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-main:hover::after { transform: translateX(0); }
+  .btn-main span { position: relative; z-index: 1; }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-note::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+  /* Stats strip */
+  .stats-strip {
+    display: flex;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 70px;
+    animation: fadeUp 0.5s ease 0.4s both;
+  }
+
+  .stat-item {
+    flex: 1;
+    padding: 24px 20px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: var(--ff-head);
+    font-size: 42px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem {
+    padding: 100px 5%;
+    background: var(--cream);
+    color: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problem::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    left: 3%;
+    font-family: var(--ff-head);
+    font-size: 300px;
+    color: rgba(255,92,26,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .section-label {
+    font-family: var(--ff-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--orange);
+  }
+
+  .problem h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+    max-width: 700px;
+  }
+
+  .pain-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .pain-card {
+    background: rgba(12,12,12,0.06);
+    border: 1px solid rgba(12,12,12,0.12);
+    padding: 20px 24px;
+    position: relative;
+  }
+
+  .pain-card::before {
+    content: attr(data-num);
+    font-family: var(--ff-head);
+    font-size: 64px;
+    color: rgba(255,92,26,0.12);
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    line-height: 1;
+  }
+
+  .pain-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* ── SOLUTION ── */
+  .solution {
+    padding: 100px 5%;
+    background: var(--black);
+  }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .solution-text h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .solution-text h2 em {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    color: var(--orange);
+    font-size: 0.85em;
+  }
+
+  .solution-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(247,244,238,0.7);
+    margin-bottom: 32px;
+  }
+
+  .solution-visual {
+    position: relative;
+  }
+
+  .phone-mockup {
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 36px;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    max-width: 280px;
+    margin: 0 auto;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px #444;
+  }
+
+  .phone-mockup::before {
+    content: '';
+    width: 80px; height: 6px;
+    background: #333;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto 30px;
+  }
+
+  .reel-item {
+    background: var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideRight 0.5s ease both;
+  }
+
+  .reel-item:nth-child(2) { animation-delay: 0.15s; }
+  .reel-item:nth-child(3) { animation-delay: 0.3s; }
+
+  .reel-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .reel-info { flex: 1; }
+  .reel-title { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .reel-day { font-size: 10px; color: var(--muted); }
+
+  .reel-views {
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .phone-badge {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    background: var(--orange);
+    color: var(--black);
+    font-family: var(--ff-head);
+    font-size: 13px;
+    padding: 8px 14px;
+    letter-spacing: 0.05em;
+    transform: rotate(8deg);
+  }
+
+  /* ── 7 DAY PLAN ── */
+  .plan {
+    padding: 100px 5%;
+    background: #111;
+  }
+
+  .plan h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .plan-sub {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(247,244,238,0.5);
+    margin-bottom: 60px;
+  }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  .day-card {
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 10px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+  }
+
+  .day-card.highlight {
+    background: rgba(255,92,26,0.1);
+    border-color: rgba(255,92,26,0.4);
+  }
+
+  .day-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+
+  .day-card:hover::before { transform: scaleX(1); }
+
+  .day-num {
+    font-family: var(--ff-head);
+    font-size: 28px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .day-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .day-task {
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgba(247,244,238,0.7);
+  }
+
+  /* ── WHAT YOU GET ── */
+  .kit {
+    padding: 100px 5%;
+    background: var(--black);
+  }
+
+  .kit h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1;
+    margin-bottom: 50px;
+  }
+
+  .kit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    border: 1px solid var(--border);
+  }
+
+  .kit-item {
+    padding: 32px 24px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .kit-item:hover { background: rgba(255,92,26,0.06); }
+
+  .kit-emoji {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .kit-title {
+    font-family: var(--ff-body);
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .kit-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  /* ── SOCIAL PROOF ── */
+  .proof {
+    padding: 80px 5%;
+    background: var(--orange);
+    color: var(--black);
+  }
+
+  .proof h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(32px, 5vw, 60px);
+    margin-bottom: 40px;
+    line-height: 1;
+  }
+
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .testi {
+    background: rgba(0,0,0,0.1);
+    padding: 24px;
+    position: relative;
+  }
+
+  .testi-text {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    color: rgba(12,12,12,0.85);
+  }
+
+  .testi-author {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(12,12,12,0.6);
+  }
+
+  /* ── FAQ ── */
+  .faq {
+    padding: 100px 5%;
+    background: #111;
+  }
+
+  .faq h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 48px;
+    line-height: 1;
+  }
+
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+    cursor: pointer;
+  }
+
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--white);
+    gap: 20px;
+  }
+
+  .faq-icon {
+    font-size: 20px;
+    color: var(--orange);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-a { max-height: 200px; padding-top: 14px; }
+
+  /* ── CTA FINAL ── */
+  .final-cta {
+    padding: 120px 5%;
+    background: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: 'START';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-head);
+    font-size: clamp(120px, 20vw, 260px);
+    color: rgba(255,92,26,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.1em;
+  }
+
+  .final-cta h2 {
+    font-family: var(--ff-head);
+    font-size: clamp(42px, 7vw, 90px);
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .final-cta p {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(247,244,238,0.55);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .final-cta .btn-main {
+    font-size: 18px;
+    padding: 20px 56px;
+    position: relative;
+  }
+
+  .guarantee {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .guarantee span { color: var(--green); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080808;
+    border-top: 1px solid var(--border);
+    padding: 32px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-family: var(--ff-head);
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--orange); }
+
+  footer p {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .solution-grid { grid-template-columns: 1fr; gap: 40px; }
+    .days-grid { grid-template-columns: repeat(4, 1fr); }
+    .stats-strip { flex-wrap: wrap; }
+    .stat-item { min-width: 50%; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .days-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero h1 { font-size: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>🎬 MAKE YOUR FIRST REEL</span>
+    <span>📱 7 DAYS. 3 REELS. ZERO EXPERIENCE NEEDED.</span>
+    <span>🔥 YOUR AUDIENCE IS WAITING</span>
+    <span>✨ START TODAY — IT'S FREE</span>
+    <span>🎬 MAKE YOUR FIRST REEL</span>
+    <span>📱 7 DAYS. 3 REELS. ZERO EXPERIENCE NEEDED.</span>
+    <span>🔥 YOUR AUDIENCE IS WAITING</span>
+    <span>✨ START TODAY — IT'S FREE</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">REEL<span>KIT</span></div>
+  <button class="nav-cta" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Get Free Access</button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-watermark">3</div>
+  <div class="hero-tag">The 7-Day Content Creator Kit</div>
+  <h1>
+    MAKE YOUR<br>
+    <span class="orange">FIRST 3</span><br>
+    <span class="outline">REELS.</span>
+  </h1>
+  <p class="hero-sub">No fancy camera. No editing skills. No clue where to start. <br>Just 7 days and a plan that actually works.</p>
+  <div class="hero-actions">
+    <button class="btn-main" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
+      <span>Start for Free →</span>
+    </button>
+    <div class="hero-note">No credit card needed</div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">12K+</div>
+      <div class="stat-label">Creators started</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Days to first reel</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Reels guaranteed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0₹</div>
+      <div class="stat-label">Cost to start</div>
+    </div>
+  </div>
+</section>
+
+<!-- Problem -->
+<section class="problem reveal">
+  <div class="section-label">The problem</div>
+  <h2>YOU KEEP SAYING "I'LL START TOMORROW."</h2>
+  <p style="font-size:17px;line-height:1.8;max-width:600px;color:#444;margin-bottom:10px">You have ideas. You have a phone. You've watched hundreds of reels. But somehow you still haven't made your first one. Sound familiar?</p>
+  <div class="pain-points">
+    <div class="pain-card" data-num="01">
+      <p>"I don't know what to post about."</p>
+    </div>
+    <div class="pain-card" data-num="02">
+      <p>"My editing looks bad compared to everyone else."</p>
+    </div>
+    <div class="pain-card" data-num="03">
+      <p>"What if nobody watches it?"</p>
+    </div>
+    <div class="pain-card" data-num="04">
+      <p>"I'll start when I have better equipment."</p>
+    </div>
+    <div class="pain-card" data-num="05">
+      <p>"I tried once and gave up after day 2."</p>
+    </div>
+    <div class="pain-card" data-num="06">
+      <p>"I don't have time to figure all this out alone."</p>
+    </div>
+  </div>
+</section>
+
+<!-- Solution -->
+<section class="solution reveal">
+  <div class="section-label">The solution</div>
+  <div class="solution-grid">
+    <div class="solution-text">
+      <h2>A KIT BUILT FOR <em>BEGINNERS</em> WHO ARE DONE WAITING.</h2>
+      <p>The Content Creator Kit gives you a dead-simple 7-day plan. Each day, one small task. By Day 7, you have 3 reels posted, a feel for your style, and the confidence to keep going.</p>
+      <p>No overwhelming strategy. No 40-step editing tutorials. Just the essentials — done in under 30 minutes a day.</p>
+      <button class="btn-main" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
+        <span>I'm Ready — Let's Go →</span>
+      </button>
+    </div>
+    <div class="solution-visual">
+      <div class="phone-mockup">
+        <div class="phone-badge">DAY 7 ✓</div>
+        <div class="reel-item">
+          <div class="reel-icon">🎬</div>
+          <div class="reel-info">
+            <div class="reel-title">Reel #1 — Your Story</div>
+            <div class="reel-day">Day 3 · Posted</div>
+          </div>
+          <div class="reel-views">2.4K views</div>
+        </div>
+        <div class="reel-item">
+          <div class="reel-icon">🔥</div>
+          <div class="reel-info">
+            <div class="reel-title">Reel #2 — A Tip</div>
+            <div class="reel-day">Day 5 · Posted</div>
+          </div>
+          <div class="reel-views">5.1K views</div>
+        </div>
+        <div class="reel-item">
+          <div class="reel-icon">⚡</div>
+          <div class="reel-info">
+            <div class="reel-title">Reel #3 — Go Viral</div>
+            <div class="reel-day">Day 7 · Posted</div>
+          </div>
+          <div class="reel-views">18K views</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Day Plan -->
+<section class="plan reveal">
+  <div class="section-label">The plan</div>
+  <h2>7 DAYS. ONE TASK A DAY.</h2>
+  <p class="plan-sub">Each day builds on the last. Nothing takes longer than 30 minutes.</p>
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-num">01</div>
+      <div class="day-label">Day 1</div>
+      <div class="day-task">Find your niche & pick your angle</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">02</div>
+      <div class="day-label">Day 2</div>
+      <div class="day-task">Study 5 reels in your niche</div>
+    </div>
+    <div class="day-card highlight">
+      <div class="day-num">03</div>
+      <div class="day-label">Day 3</div>
+      <div class="day-task">🎬 Shoot & post Reel #1</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">04</div>
+      <div class="day-label">Day 4</div>
+      <div class="day-task">Review performance. Improve one thing.</div>
+    </div>
+    <div class="day-card highlight">
+      <div class="day-num">05</div>
+      <div class="day-label">Day 5</div>
+      <div class="day-task">🔥 Shoot & post Reel #2</div>
+    </div>
+    <div class="day-card">
+      <div class="day-num">06</div>
+      <div class="day-label">Day 6</div>
+      <div class="day-task">Write 3 hooks. Pick the best one.</div>
+    </div>
+    <div class="day-card highlight">
+      <div class="day-num">07</div>
+      <div class="day-label">Day 7</div>
+      <div class="day-task">⚡ Shoot & post Reel #3 — Best one yet</div>
+    </div>
+  </div>
+</section>
+
+<!-- What you get -->
+<section class="kit reveal">
+  <div class="section-label">What's inside</div>
+  <h2>EVERYTHING YOU NEED.<br>NOTHING YOU DON'T.</h2>
+  <div class="kit-grid">
+    <div class="kit-item">
+      <span class="kit-emoji">📋</span>
+      <div class="kit-title">7-Day Action Plan</div>
+      <div class="kit-desc">A clear daily checklist. No guesswork, no overwhelm. Open. Read. Do.</div>
+    </div>
+    <div class="kit-item">
+      <span class="kit-emoji">🎣</span>
+      <div class="kit-title">30 Proven Hooks</div>
+      <div class="kit-desc">First 3 seconds decide everything. Steal these hooks and stop losing viewers immediately.</div>
+    </div>
+    <div class="kit-item">
+      <span class="kit-emoji">✂️</span>
+      <div class="kit-title">Beginner Edit Guide</div>
+      <div class="kit-desc">CapCut step-by-step. From raw footage to a reel that looks clean — in 15 minutes.</div>
+    </div>
+    <div class="kit-item">
+      <span class="kit-emoji">💡</span>
+      <div class="kit-title">20 Reel Ideas</div>
+      <div class="kit-desc">Never stare at a blank screen again. Ideas across lifestyle, fitness, finance, and more.</div>
+    </div>
+    <div class="kit-item">
+      <span class="kit-emoji">📊</span>
+      <div class="kit-title">Analytics Cheat Sheet</div>
+      <div class="kit-desc">What to measure after posting. Reach, saves, shares — explained in plain language.</div>
+    </div>
+    <div class="kit-item">
+      <span class="kit-emoji">🏆</span>
+      <div class="kit-title">Creator Community</div>
+      <div class="kit-desc">Get feedback on your reels from people who are exactly where you are right now.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="proof reveal">
+  <h2>REAL PEOPLE.<br>REAL FIRST REELS.</h2>
+  <div class="testimonials">
+    <div class="testi">
+      <div class="testi-text">"I'd been saying 'I'll start my page' for 8 months. Used this kit and posted my first reel on Day 3. It got 3,000 views. Still can't believe it."</div>
+      <div class="testi-author">— Priya S., Delhi · Finance Student</div>
+    </div>
+    <div class="testi">
+      <div class="testi-text">"The hooks sheet alone is worth it. My second reel hit 12K because of one line from that list. I was shaking."</div>
+      <div class="testi-author">— Arjun M., Mumbai · Freelancer</div>
+    </div>
+    <div class="testi">
+      <div class="testi-text">"No fluff. Just tasks. I'm not a 'content person' at all but I finished all 7 days and now I post every week."</div>
+      <div class="testi-author">— Sneha K., Bangalore · Working Professional</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal">
+  <h2>QUESTIONS?<br>ANSWERED.</h2>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Do I need any equipment or a good camera? <span class="faq-icon">+</span></div>
+    <div class="faq-a">No. Your phone is enough. In fact, some of the most-watched reels are shot on a basic Android phone. The idea matters more than the camera.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">What if I have zero editing experience? <span class="faq-icon">+</span></div>
+    <div class="faq-a">That's exactly who this is built for. The editing guide uses CapCut — a free app — and walks you through every step. You'll be editing your first reel in under 20 minutes.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">How much time do I need each day? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Most days take 15–30 minutes. Reel days (Day 3, 5, 7) might take up to an hour depending on how long you spend filming. But there are no marathon editing sessions here.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Does this work for any niche or topic? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Yes. The framework works for fitness, food, finance, travel, comedy, study content — anything. The Day 1 task helps you figure out your specific angle.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q">Is it really free? <span class="faq-icon">+</span></div>
+    <div class="faq-a">Yes. The 7-day kit is completely free. Enter your email and get instant access — no card, no catch.</div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta" id="signup">
+  <h2>YOUR FIRST REEL<br><span style="color:var(--orange)">STARTS TODAY.</span></h2>
+  <p>7 days. 3 reels. The only thing missing is you hitting the button.</p>
+  <button class="btn-main" style="font-size:18px;padding:20px 56px" onclick="handleSignup()">
+    <span>Get Free Access Now →</span>
+  </button>
+  <div class="guarantee"><span>✓</span> Free forever &nbsp;·&nbsp; <span>✓</span> No spam &nbsp;·&nbsp; <span>✓</span> Cancel anytime</div>
+
+  <div style="margin-top:48px;max-width:420px;margin-left:auto;margin-right:auto" id="formArea">
+    <input type="email" id="emailInput" placeholder="Enter your email address"
+      style="width:100%;padding:16px 20px;background:#1a1a1a;border:1px solid var(--border);color:var(--white);font-family:var(--ff-body);font-size:15px;margin-bottom:12px;outline:none;transition:border 0.2s"
+      onfocus="this.style.borderColor='var(--orange)'"
+      onblur="this.style.borderColor='var(--border)'"
+    >
+    <button onclick="handleSignup()" class="btn-main" style="width:100%;font-size:15px;padding:16px">
+      <span>Send Me the Kit →</span>
+    </button>
+    <div id="successMsg" style="display:none;margin-top:14px;color:var(--green);font-size:14px;font-weight:600">
+      ✓ You're in! Check your inbox for the kit.
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">REEL<span>KIT</span></div>
+  <p>Built for first-time creators. Start today, post by Day 7.</p>
+  <p style="color:#444">© 2025 ReelKit. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Signup
+  function handleSignup() {
+    const email = document.getElementById('emailInput').value;
+    if (email && email.includes('@')) {
+      document.getElementById('successMsg').style.display = 'block';
+      document.getElementById('emailInput').style.display = 'none';
+      document.querySelector('#formArea button').style.display = 'none';
+    } else {
+      document.getElementById('emailInput').style.borderColor = '#ff4444';
+      document.getElementById('emailInput').placeholder = 'Please enter a valid email';
+    }
+  }
+</script>
+</body>
+</html>
